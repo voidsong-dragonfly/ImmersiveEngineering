@@ -8,7 +8,6 @@
 
 package blusunrize.immersiveengineering.common.gui;
 
-import blusunrize.immersiveengineering.ImmersiveEngineering;
 import blusunrize.immersiveengineering.api.tool.IConfigurableTool;
 import blusunrize.immersiveengineering.api.tool.upgrade.IUpgradeableTool;
 import blusunrize.immersiveengineering.mixin.accessors.ContainerAccess;
@@ -58,6 +57,7 @@ public class MaintenanceKitContainer extends ItemContainer
 			return 0;
 		//Don't rebind if the tool didn't change
 		this.slots.clear();
+		((ContainerAccess)this).getRemoteSlots().clear();
 		((ContainerAccess)this).getLastSlots().clear();
 		this.addSlot(new IESlot.Maintenance(this, this.inv, 0, 28, 10));
 		int slotCount = 1;
