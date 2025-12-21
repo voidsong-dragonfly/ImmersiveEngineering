@@ -59,7 +59,7 @@ public class CommonProxy
 		return null;
 	}
 
-	public void reInitGui()
+	public void redrawFakeSlots()
 	{
 	}
 

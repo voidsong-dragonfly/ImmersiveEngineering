@@ -472,7 +472,7 @@ public abstract class IESlot extends Slot
 		public void setChanged()
 		{
 			super.setChanged();
-			ImmersiveEngineering.proxy.reInitGui();
+			ImmersiveEngineering.proxy.redrawFakeSlots();
 		}
 	}
 

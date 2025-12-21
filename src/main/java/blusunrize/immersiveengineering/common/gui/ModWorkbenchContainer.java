@@ -18,6 +18,7 @@ import blusunrize.immersiveengineering.api.tool.upgrade.IUpgradeableTool;
 import blusunrize.immersiveengineering.common.blocks.wooden.ModWorkbenchBlockEntity;
 import blusunrize.immersiveengineering.common.items.EngineersBlueprintItem;
 import blusunrize.immersiveengineering.mixin.accessors.ContainerAccess;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickType;
@@ -140,7 +141,7 @@ public class ModWorkbenchContainer extends IEBaseContainerOld<ModWorkbenchBlockE
 		for(; ownSlotCount < MAX_NUM_DYNAMIC_SLOTS; ++ownSlotCount)
 			addSlot(new IESlot.AlwaysEmptySlot(this));
 		bindPlayerInv(inventoryPlayer);
-		ImmersiveEngineering.proxy.reInitGui();
+		ImmersiveEngineering.proxy.redrawFakeSlots();
 	}
 
 	public boolean isOutputSlotOnPage(IESlot.BlueprintOutput slot)

@@ -38,31 +38,21 @@ import java.util.List;
 
 import static blusunrize.immersiveengineering.api.IEApi.ieLoc;
 
-public class ModWorkbenchScreen extends ToolModificationScreen<ModWorkbenchContainer>
+public class ModWorkbenchScreen extends IEContainerScreen<ModWorkbenchContainer> implements IFakeSlotRecipeSelectionScreen
 {
 	private static final ResourceLocation TEXTURE = makeTextureLocation("workbench");
 	private static final ButtonTexture PAGE_LEFT = new ButtonTexture(ieLoc("mod_workbench/page_left"));
 	private static final ButtonTexture PAGE_RIGHT = new ButtonTexture(ieLoc("mod_workbench/page_right"));
 
-	private final ModWorkbenchBlockEntity workbench;
-
 	public ModWorkbenchScreen(ModWorkbenchContainer container, Inventory inventoryPlayer, Component title)
 	{
 		super(container, inventoryPlayer, title, TEXTURE);
-		workbench = container.tile;
 		this.imageHeight = 168;
 	}
 
 	@Override
-	protected void sendMessage(CompoundTag data)
+	public void redrawFakeSlots()
 	{
-		PacketDistributor.sendToServer(new MessageBlockEntitySync(this.workbench.getBlockPos(), data));
-	}
-
-	@Override
-	public void init()
-	{
-		super.init();
 		Slot s = menu.getSlot(0);
 		if(s.hasItem()&&s.getItem().getItem() instanceof EngineersBlueprintItem)
 		{
@@ -79,6 +69,7 @@ public class ModWorkbenchScreen extends ToolModificationScreen<ModWorkbenchConta
 				));
 			}
 		}
+		this.rebuildWidgets();
 	}
 
 	private void sendButton(int i)

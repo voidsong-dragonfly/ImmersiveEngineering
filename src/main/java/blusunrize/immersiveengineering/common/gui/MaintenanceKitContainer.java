@@ -80,7 +80,6 @@ public class MaintenanceKitContainer extends ItemContainer
 		for(; slotCount < MAX_NUM_DYNAMIC_SLOTS; ++slotCount)
 			addSlot(new IESlot.AlwaysEmptySlot(this));
 		bindPlayerInv(this.inventoryPlayer);
-		ImmersiveEngineering.proxy.reInitGui();
 		return slotCount;
 	}
 

@@ -316,11 +316,11 @@ public class ClientProxy extends CommonProxy
 	}
 
 	@Override
-	public void reInitGui()
+	public void redrawFakeSlots()
 	{
-		Screen currentScreen = mc().screen;
-		if(currentScreen instanceof IEContainerScreen)
-			currentScreen.init(mc(), currentScreen.width, currentScreen.height);
+		Screen screen = mc().screen;
+		if(screen instanceof IFakeSlotRecipeSelectionScreen currentScreen)
+			currentScreen.redrawFakeSlots();
 	}
 
 	@Override

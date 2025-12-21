@@ -30,7 +30,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutoWorkbenchScreen extends IEContainerScreen<AutoWorkbenchMenu>
+public class AutoWorkbenchScreen extends IEContainerScreen<AutoWorkbenchMenu> implements IFakeSlotRecipeSelectionScreen
 {
 	private final List<GuiButtonItem> selectionButtons = new ArrayList<>();
 
@@ -54,8 +54,20 @@ public class AutoWorkbenchScreen extends IEContainerScreen<AutoWorkbenchMenu>
 		this.clearWidgets();
 		this.selectionButtons.clear();
 		super.init();
+		drawFakeSlots();
+	}
+
+	@Override
+	public void redrawFakeSlots()
+	{
+		drawFakeSlots();
+		this.rebuildWidgets();
+	}
+
+	private void drawFakeSlots()
+	{
 		Slot s = menu.getSlot(0);
-		if(s!=null&&s.hasItem()&&s.getItem().getItem() instanceof EngineersBlueprintItem)
+		if(s.hasItem()&&s.getItem().getItem() instanceof EngineersBlueprintItem)
 		{
 			List<RecipeHolder<BlueprintCraftingRecipe>> recipes = BlueprintCraftingRecipe.findRecipes(
 					Minecraft.getInstance().level, IEApiDataComponents.getBlueprintType(s.getItem())

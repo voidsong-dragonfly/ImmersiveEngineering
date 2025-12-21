@@ -21,18 +21,12 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 import javax.annotation.Nonnull;
 
-public class MaintenanceKitScreen extends ToolModificationScreen<MaintenanceKitContainer>
+public class MaintenanceKitScreen extends IEContainerScreen<MaintenanceKitContainer>
 {
 	public MaintenanceKitScreen(MaintenanceKitContainer container, Inventory inventoryPlayer, Component title)
 	{
 		super(container, inventoryPlayer, title, makeTextureLocation("maintenance_kit"));
 		this.imageWidth = 195;
-	}
-
-	@Override
-	protected void sendMessage(CompoundTag data)
-	{
-		PacketDistributor.sendToServer(new MessageMaintenanceKit(menu.getEquipmentSlot(), data));
 	}
 
 	@Override
