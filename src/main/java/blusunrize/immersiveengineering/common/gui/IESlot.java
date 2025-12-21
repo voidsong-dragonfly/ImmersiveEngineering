@@ -405,6 +405,12 @@ public abstract class IESlot extends Slot
 			if(!stack.isEmpty()&&stack.getItem() instanceof IUpgradeableTool upgradeableTool)
 				upgradeableTool.removeFromWorkbench(player, stack);
 		}
+
+		@Override
+		public void set(@Nonnull ItemStack stack) {
+			super.set(stack);
+			ImmersiveEngineering.proxy.redrawFakeSlots();
+		}
 	}
 
 	public static class Maintenance extends IESlot
@@ -469,9 +475,8 @@ public abstract class IESlot extends Slot
 		}
 
 		@Override
-		public void setChanged()
-		{
-			super.setChanged();
+		public void set(@Nonnull ItemStack stack) {
+			super.set(stack);
 			ImmersiveEngineering.proxy.redrawFakeSlots();
 		}
 	}

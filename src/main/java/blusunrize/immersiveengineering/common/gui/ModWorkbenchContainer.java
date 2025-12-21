@@ -141,7 +141,6 @@ public class ModWorkbenchContainer extends IEBaseContainerOld<ModWorkbenchBlockE
 		for(; ownSlotCount < MAX_NUM_DYNAMIC_SLOTS; ++ownSlotCount)
 			addSlot(new IESlot.AlwaysEmptySlot(this));
 		bindPlayerInv(inventoryPlayer);
-		ImmersiveEngineering.proxy.redrawFakeSlots();
 	}
 
 	public boolean isOutputSlotOnPage(IESlot.BlueprintOutput slot)
